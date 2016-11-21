@@ -31,7 +31,7 @@ class ViewController: UIViewController {
             newX = view.frame.midX + (view.frame.size.width * CGFloat(x))
             print(newX)
             
-            contentWidth += newX
+            contentWidth = newX + 160
             print(contentWidth)
             
             scrollView.addSubview(imageView)
