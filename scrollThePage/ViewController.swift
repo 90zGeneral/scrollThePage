@@ -18,7 +18,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
         var contentWidth: CGFloat = 0.0
+        
+        let scrollWidth = scrollView.frame.size.width
         
         for x in 0...2 {
             
@@ -28,17 +34,20 @@ class ViewController: UIViewController {
             
             var newX: CGFloat = 0.0
             
-            newX = view.frame.midX + (view.frame.size.width * CGFloat(x))
+            newX = (scrollWidth / 2) + (scrollWidth * CGFloat(x))
             
-            contentWidth = newX + view.frame.midX
+            contentWidth = newX + scrollWidth / 2
             
             scrollView.addSubview(imageView)
             
-            imageView.frame = CGRect(x: newX - 75, y: (view.frame.size.height / 2) - 75, width: 150, height: 150)
+            imageView.frame = CGRect(x: newX - 75, y: (scrollView.frame.size.height / 2) - 75, width: 150, height: 150)
             
         }
         
-        scrollView.contentSize = CGSize(width: contentWidth, height: view.frame.size.height)
+        scrollView.contentSize = CGSize(width: contentWidth, height: scrollView.frame.size.height)
+        scrollView.clipsToBounds = false
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
