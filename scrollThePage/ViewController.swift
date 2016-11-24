@@ -19,13 +19,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let panRec = UIPanGestureRecognizer()
     let tapRec = UITapGestureRecognizer()
+    
+    let tapToScroll = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    func myViewTime() {
+    func myViewTime(sender: UITapGestureRecognizer) {
+        
+        let location = sender.location(in: myView)
+        let rect = CGRect(origin: location, size: .zero)
+        scrollView.scrollRectToVisible(tapToScroll, animated: true)
         
         print("you tapped me")
         
@@ -60,6 +66,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             
             //Setting the position of the imageView in the center while determining the size by width & height
             imageView.frame = CGRect(x: newX - 75, y: (scrollView.frame.size.height / 2) - 75, width: 150, height: 150)
+            
+            print(imageView.frame)
             
         }
         
