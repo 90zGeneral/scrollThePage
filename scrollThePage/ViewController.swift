@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     //Outlet
     @IBOutlet var myView: UIImageView!
@@ -23,27 +23,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        panRec.addTarget(self, action: #selector(ViewController.myViewTime))
-        tapRec.addTarget(self, action: #selector(ViewController.scrollViewTime))
-        
-        myView.addGestureRecognizer(panRec)
-        scrollView.addGestureRecognizer(tapRec)
-        
-        myView.isUserInteractionEnabled = true
-        scrollView.isUserInteractionEnabled = true
-        
     }
     
     func myViewTime() {
         
-    }
-    
-    func scrollViewTime() {
+        print("you tapped me")
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        //
+        tapRec.addTarget(self, action: #selector(ViewController.myViewTime))
+        myView.addGestureRecognizer(tapRec)
+        myView.isUserInteractionEnabled = true
         
         //Creating containers to contain the width of the content and the scrollView
         var contentWidth: CGFloat = 0.0
@@ -69,6 +62,7 @@ class ViewController: UIViewController {
             imageView.frame = CGRect(x: newX - 75, y: (scrollView.frame.size.height / 2) - 75, width: 150, height: 150)
             
         }
+        
         //Setting the size of the content within the scrollView
         scrollView.contentSize = CGSize(width: contentWidth, height: scrollView.frame.size.height)
         
