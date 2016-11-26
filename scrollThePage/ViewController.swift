@@ -20,7 +20,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     let panRec = UIPanGestureRecognizer()
     let tapRec = UITapGestureRecognizer()
     
-    let tapToScroll = CGRect(x: <#T##CGFloat#>, y: <#T##CGFloat#>, width: <#T##CGFloat#>, height: <#T##CGFloat#>)
+    let tapToScroll = CGRect(x: 240, y: 209, width: 150, height: 150)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     func myViewTime(sender: UITapGestureRecognizer) {
         
         let location = sender.location(in: myView)
-        let rect = CGRect(origin: location, size: .zero)
+        _ = CGRect(origin: location, size: .zero)
         scrollView.scrollRectToVisible(tapToScroll, animated: true)
         
         print("you tapped me")
